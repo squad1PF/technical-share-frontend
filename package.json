@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
+    "start": "node server.js",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "express": "^4.17.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
