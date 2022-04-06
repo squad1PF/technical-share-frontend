@@ -1,18 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './app.routes';
 
-import Landing from '../pages/Landing';
-import Users from '../pages/Users';
+import AuthRoutes from './auth.routes';
 
-const AppRoutes: React.FC = () => {
+const Routes: React.FC = () => {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Landing />}/>
-                <Route path='/users' element={<Users />}/>
-            </Routes>
+            <AuthRoutes />
+            <AppRoutes />
         </BrowserRouter>
     )
 }
 
-export default AppRoutes;
+export default Routes;
