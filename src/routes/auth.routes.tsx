@@ -1,20 +1,24 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, RouteObject, Routes, useRoutes } from 'react-router-dom';
 
 import Landing from '../pages/Landing';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SingIn';
 import Users from '../pages/Users';
 
-const AuthRoutes: React.FC = () => {
-    return (
-        <Routes>
-            <Route path='/' element={<Landing />}/>
-            <Route path='/users' element={<Users />}/>
-            <Route path='/cadastro' element={<SignUp />}/>
-            <Route path='/entrar' element={<SignIn />}/>
-        </Routes>
-    )
-}
+const AuthRoutes: RouteObject[] = [
+    {
+        path: "/signin",
+        element: <SignIn />
+    },
+    {
+        path: "/signup",
+        element: <SignUp />
+    },
+    {
+        path: "/users",
+        element: <Users />
+    },
+]
 
 export default AuthRoutes;
