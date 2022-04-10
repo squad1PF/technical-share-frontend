@@ -19,8 +19,8 @@ const Routes: React.FC = () => {
             <Link to="/">Home</Link><br/>
             <Link to="/users">Users</Link><br/>
             <Link to="/dashboard">Dashboard</Link><br/>
-            <Link to="/signin">entrar com uma conta</Link><br/>
-            <Link to="/signup">criar uma conta</Link><br/>
+            <Link to="/signin">Sign In</Link><br/>
+            <Link to="/signup">Sign Up</Link><br/>
 
             { routesElements }
         </>
