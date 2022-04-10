@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useRoutes } from 'react-router-dom';
+import Menu from '../components/Menu';
 
 import Landing from '../pages/Landing';
 import AppRoutes from './app.routes';
@@ -14,15 +15,11 @@ const Routes: React.FC = () => {
 
     return (
         <>
-            <h1>Rotas Gerais</h1>
-
-            <Link to="/">Home</Link><br/>
-            <Link to="/users">Users</Link><br/>
-            <Link to="/dashboard">Dashboard</Link><br/>
-            <Link to="/signin">Sign In</Link><br/>
-            <Link to="/signup">Sign Up</Link><br/>
-
-            { routesElements }
+            <Menu />
+            
+            {
+                routesElements
+            }
         </>
     )
 }
