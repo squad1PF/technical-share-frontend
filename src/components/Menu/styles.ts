@@ -35,6 +35,8 @@ export const MenuWrapper = styled.nav`
 `
 
 export const MobileLinks = styled.div`
+    box-shadow: 0 10px 10px #00000020;
+
     a {
         text-decoration: none;
         display: inline-block;

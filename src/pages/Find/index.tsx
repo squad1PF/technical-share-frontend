@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { UserData } from "../../interfaces/user";
 import { getUsers } from "../../services/users";
 
-const Users: React.FC = () => {
+const Find: React.FC = () => {
     const [users, setUsers] = useState<UserData[] | null>(null);
     
     useEffect(() => {
@@ -12,7 +12,7 @@ const Users: React.FC = () => {
 
     return (
         <>
-            <h1>User Works!</h1>
+            <h1>Find Works!</h1>
             {
                 users && (
                     users.map((user, index) => (
@@ -29,4 +29,4 @@ const Users: React.FC = () => {
     )
 }
 
-export default Users;
+export default Find;
