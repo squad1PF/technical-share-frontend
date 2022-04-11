@@ -26,7 +26,7 @@ const Menu: React.FC = () => {
 
                 <div className="container" id="links">
                     <Link to="/">Home</Link><br/>
-                    <Link to="/users">Users</Link><br/>
+                    <Link to="/find">Agendar Encontros</Link><br/>
                     <Link to="/dashboard">Dashboard</Link><br/>
                     <Link to="/signin">Sign In</Link><br/>
                     <Link to="/signup">Sign Up</Link><br/>
@@ -37,7 +37,7 @@ const Menu: React.FC = () => {
                 displayLinks && (
                     <MobileLinks>
                         <Link to="/">Home</Link><br/>
-                        <Link to="/users">Users</Link><br/>
+                        <Link to="/find">Agendar Encontros</Link><br/>
                         <Link to="/dashboard">Dashboard</Link><br/>
                         <Link to="/signin">Sign In</Link><br/>
                         <Link to="/signup">Sign Up</Link><br/>

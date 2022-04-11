@@ -4,7 +4,7 @@ import { Route, RouteObject, Routes, useRoutes } from 'react-router-dom';
 import Landing from '../pages/Landing';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SingIn';
-import Users from '../pages/Users';
+import Users from '../pages/Find';
 
 const AuthRoutes: RouteObject[] = [
     {
@@ -16,7 +16,7 @@ const AuthRoutes: RouteObject[] = [
         element: <SignUp />
     },
     {
-        path: "/users",
+        path: "/find",
         element: <Users />
     },
 ]
