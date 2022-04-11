@@ -6,9 +6,9 @@ export const defaultTheme: DefaultTheme = {
           main: '#FE4400',
           contrastText: '#ffffff'
         },
-        /* secondary: {
-          main: '#709fb0',
+        secondary: {
+          main: '#303033',
           contrastText: '#ffffff'
-        } */
+        }
       }
 };
