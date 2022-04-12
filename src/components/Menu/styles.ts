@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MenuWrapper = styled.nav`
     background-color: ${props => props.theme.palette.primary.main};
+    box-shadow: 0 10px 10px #00000020;
     color: ${props => props.theme.palette.primary.contrastText};
     justify-content: space-between;
     display: flex;
@@ -22,7 +23,7 @@ export const MenuWrapper = styled.nav`
     }
 
 
-    @media(min-width: 540px) {
+    @media(min-width: 725px) {
         #icon {
             display: none;
         }
@@ -46,7 +47,7 @@ export const MobileLinks = styled.div`
         border-bottom: 1px solid #00000040;
     }
 
-    @media(min-width: 540px) {
+    @media(min-width: 725px) {
         display: none;
     }
 `;

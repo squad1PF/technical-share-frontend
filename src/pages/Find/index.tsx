@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import UserCard from "../../components/UserCard";
 
 import { UserData } from "../../interfaces/user";
 import { getUsers } from "../../services/users";
+import { FindContainer } from "./styles";
 
 const Find: React.FC = () => {
     const [users, setUsers] = useState<UserData[] | null>(null);
@@ -11,21 +13,20 @@ const Find: React.FC = () => {
     }, []);
 
     return (
-        <>
-            <h1>Find Works!</h1>
+        <FindContainer>
+            <h2>Procure pessoas</h2>
             {
                 users && (
                     users.map((user, index) => (
-                        <div key={index}>
-                            <p>
-                                nome: { user.name }<br/>
-                                e-mail: { user.email }
-                            </p>
-                        </div>
+                        <UserCard
+                            user={user}
+                            key={"user_" + index}
+                            elementKey={"user_" + index}
+                        />
                     ))
                 )
             }
-        </>
+        </FindContainer>
     )
 }
 

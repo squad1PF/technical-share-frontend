@@ -7,8 +7,6 @@ import { MenuWrapper, MobileLinks } from "./styles";
 const Menu: React.FC = () => {
     const [displayLinks, setDisplayLinks] = useState(true);
 
-
-
     return (
         <>
             <MenuWrapper>
