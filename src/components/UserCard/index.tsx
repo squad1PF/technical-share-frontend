@@ -1,5 +1,6 @@
 import React from "react";
 import { FiBriefcase, FiMail } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 import { UserData } from "../../interfaces/user";
 import { UserCardWrapper } from "./styles";
@@ -10,13 +11,14 @@ type UserCardProps = {
 }
 
 const UserCard: React.FC<UserCardProps> = ({ user, elementKey }) => {
-    const { name, email, role, skills } = user;
+    const { id, name, email, role, skills } = user;
 
     const techs = skills.map((skill, index) => skill.tech)
     const [username, server] = email.split("@");
+    const navigate = useNavigate();
 
     return (
-        <UserCardWrapper>
+        <UserCardWrapper onClick={() => navigate(`/user/${id}`)}>
             <div id="avatar-wrapper">
                 <div id="avatar">?</div>
             </div>

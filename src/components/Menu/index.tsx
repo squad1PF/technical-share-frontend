@@ -7,6 +7,15 @@ import { MenuWrapper, MobileLinks } from "./styles";
 const Menu: React.FC = () => {
     const [displayLinks, setDisplayLinks] = useState(true);
 
+    const links = (
+        <>
+            <Link to="/">Home</Link><br/>
+            <Link to="/find">Agendar Encontros</Link><br/>
+            <Link to="/signin">Entrar</Link><br/>
+            <Link to="/signup">Cadastrar</Link><br/>
+        </>
+    )
+
     return (
         <>
             <MenuWrapper>
@@ -23,22 +32,14 @@ const Menu: React.FC = () => {
                 </div>
 
                 <div className="container" id="links">
-                    <Link to="/">Home</Link><br/>
-                    <Link to="/find">Agendar Encontros</Link><br/>
-                    <Link to="/dashboard">Dashboard</Link><br/>
-                    <Link to="/signin">Sign In</Link><br/>
-                    <Link to="/signup">Sign Up</Link><br/>
+                    { links }
                 </div>
             </MenuWrapper>
 
             {
                 displayLinks && (
                     <MobileLinks>
-                        <Link to="/">Home</Link><br/>
-                        <Link to="/find">Agendar Encontros</Link><br/>
-                        <Link to="/dashboard">Dashboard</Link><br/>
-                        <Link to="/signin">Sign In</Link><br/>
-                        <Link to="/signup">Sign Up</Link><br/>
+                        { links }
                     </MobileLinks>
                 )
             }

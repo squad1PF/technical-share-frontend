@@ -4,13 +4,20 @@ export const UserCardWrapper = styled.div`
     border-radius: 4px;
     margin-bottom: 4%;
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     border: 1px solid #00000040;
     box-shadow: 0 10px 10px #00000020;
     display: flex;
     padding: 4%;
     flex-direction: column;
     text-align: center;
+    cursor: pointer;
+    transition: .2s ease;
+
+    &:hover {
+        scale: 0.8;
+        transform: scale(0.98);
+    }
 
     div#avatar-wrapper {
         //background-color: #ffff0040;
