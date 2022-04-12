@@ -1,13 +1,12 @@
-import React from 'react';
-import { Route, RouteObject, Routes } from 'react-router-dom';
+import { RouteObject } from 'react-router-dom';
 
-import Dashboard from '../pages/Dashboard';
+import Users from '../pages/Find';
 
 const AppRoutes: RouteObject[] = [
     {
-        path: "/dashboard",
-        element: <Dashboard />,
-    }
+        path: "/find",
+        element: <Users />
+    },
 ]
 
 export default AppRoutes;
