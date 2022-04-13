@@ -18,7 +18,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, elementKey }) => {
     const navigate = useNavigate();
 
     return (
-        <UserCardWrapper onClick={() => navigate(`/user/${id}`)}>
+        <UserCardWrapper onClick={() => navigate(`/profile/${id}`)}>
             <div id="avatar-wrapper">
                 <div id="avatar">?</div>
             </div>
