@@ -1,11 +1,20 @@
 import styled from "styled-components";
 
-export const ProfilePage = styled.main`
+export const ProfilePage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+export const ProfileContainer = styled.div`
+    box-shadow: 0 0 100px #00000040;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
     padding: 4% 8%;
+    display: flex;
     height: 100%;
+    width: 100%;
 
     h4.label {
         margin-top: 8%;
@@ -29,6 +38,7 @@ export const ProfilePage = styled.main`
             min-width: 100px;
             min-height: 100px;
             margin-top: 8%;
+            //background-color: ${props => props.theme.palette.secondary.main}
         }
 
         div#info-wrapper {
@@ -42,22 +52,41 @@ export const ProfilePage = styled.main`
                 font-size: 18pt;
                 color: #4B4FA1;
             }
-            
-            div#contact-wrapper {
-                font-size: 12pt;
-            }
         }
+    }
+
+    div#contact-wrapper {
+        font-size: 12pt;
+        width: 100%;
     }
 
     div#skills-container {
         width: 100%;
 
         ul {
+            flex-direction: column;
+            align-items: center;
             list-style: none;
+            display: flex;
 
             li {
-                display: flex;
+                border-bottom: 1px solid #00000020;
                 justify-content: space-between;
+                display: flex;
+                padding: 2% 4%;
+                width: 100%;
+            }
+        }
+    }
+
+    @media(min-width: 400px) {
+        div#profile-container {
+            flex-direction: row;
+            
+            div#info-wrapper {
+                width: auto;
+                margin: 0;
+                margin-left: 4%;
             }
         }
     }
