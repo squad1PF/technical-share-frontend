@@ -5,7 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { MenuWrapper, MobileLinks } from "./styles";
 
 const Menu: React.FC = () => {
-    const [displayLinks, setDisplayLinks] = useState(true);
+    const [displayLinks, setDisplayLinks] = useState(false);
 
     const links = (
         <>
