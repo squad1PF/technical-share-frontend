@@ -1,0 +1,121 @@
+{
+    "users": [
+        {
+            "id": "KASkdJ182",
+            "name": "Rian Aquino",
+            "email": "rian.aquino@gmail.com",
+            "role": {
+                "name": "Frontend",
+                "seniority": "Trainee"
+            },
+            "skills": [
+                {
+                    "tech": "Javascript",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": "K2SkdJ182",
+            "name": "Eloisa de Oliveira",
+            "email": "eloisaoliveira@outlook.com",
+            "role": {
+                "name": "Fullstack",
+                "seniority": "Pleno"
+            },
+            "skills": [
+                {
+                    "tech": "Javascript",
+                    "level": 4
+                },
+                {
+                    "tech": "HTML",
+                    "level": 3
+                }
+            ]
+        },
+        {
+            "id": "K123dJ182",
+            "name": "Alexsandro Silva",
+            "email": "alexsilva@outlook.com",
+            "role": {
+                "name": "Backend",
+                "seniority": "Sênior"
+            },
+            "skills": [
+                {
+                    "tech": "Javascript",
+                    "level": 2
+                },
+                {
+                    "tech": "Java",
+                    "level": 5
+                }
+            ]
+        },
+        {
+            "id": "KASasdfS182",
+            "name": "Saulo Quaresma",
+            "email": "sauloquaresma@outlook.com",
+            "role": {
+                "name": "Frontend",
+                "seniority": "Pleno"
+            },
+            "skills": [
+                {
+                    "tech": "Javascript",
+                    "level": 3
+                },
+                {
+                    "tech": "NodeJS",
+                    "level": 4
+                },
+                {
+                    "tech": "CSS",
+                    "level": 3
+                }
+            ]
+        },
+        {
+            "id": "KAAWEdJ182",
+            "name": "Fernanda Caccese",
+            "email": "fercaccese@outlook.com",
+            "role": {
+                "name": "UX/UI",
+                "seniority": "Pleno"
+            },
+            "skills": [
+                {
+                    "tech": "Research",
+                    "level": 2
+                },
+                {
+                    "tech": "UI",
+                    "level": 4
+                },
+                {
+                    "tech": "Test",
+                    "level": 3
+                }
+            ]
+        }
+    ],
+
+    "messages": [
+        {
+            "id": "ISADKASDJ",
+            "id_sednder": "KAAWEdJ182",
+            "id_receiver": "KASasdfS182"
+        }
+    ],
+
+    "mentorships": [
+        {
+            "id": "aaaaa",
+            "id_mentor": "KASasdfS182",
+            "id_mentored": "K2SkdJ182",
+            "start_time": "Thu Apr 14 2022 15:00:00 GMT-0300",
+            "end_time": "Thu Apr 14 2022 15:30:00 GMT-0300"
+        }
+    ]
+}

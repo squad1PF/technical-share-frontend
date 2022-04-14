@@ -106,12 +106,8 @@ const users: UserData[] = [
 ]
 
 const getUsers = async (callback: (value: UserData[]) => void) => {
-    /* const res: AxiosResponse<UserData[]> = await api.get("/users");
-    if (res.status !== 200) throw res.status; */
-
-    const res: { data: UserData[] } = {
-        data: users
-    }
+    const res: AxiosResponse<UserData[]> = await api.get("/users");
+    if (res.status !== 200) throw res.status;
 
     callback(res.data);
 }
