@@ -11,10 +11,12 @@ const Profile: React.FC = () => {
     const [user, setUser] = useState<UserData | undefined>(undefined);
 
     useEffect(() => {
-        getUser(id || "", (value) => {
-            setUser(value)
-        })
-    }, [user]);
+        if(id) {
+            getUser(id, (value) => {
+                setUser(value)
+            })
+        }
+    }, []);
 
     return (
         <ProfilePage>
