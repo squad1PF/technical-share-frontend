@@ -13,7 +13,9 @@ type UserCardProps = {
 const UserCard: React.FC<UserCardProps> = ({ user, elementKey }) => {
     const { id, name, email, role, skills } = user;
 
-    const techs = skills.map((skill, index) => skill.tech)
+    const techs = skills.map((skill, index) => (
+        skill.tech
+    ))
     const [username, server] = email.split("@");
     const navigate = useNavigate();
 

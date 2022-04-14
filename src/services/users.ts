@@ -9,7 +9,7 @@ const users: UserData[] = [
         name: "Rian Aquino",
         email: "rian.aquino@gmail.com",
         role: {
-            name: "Developer",
+            name: "Frontend",
             seniority: "Trainee"
         },
         skills: [
@@ -24,7 +24,7 @@ const users: UserData[] = [
         name: "Eloisa de Oliveira",
         email: "eloisaoliveira@outlook.com",
         role: {
-            name: "Developer",
+            name: "Fullstack",
             seniority: "Pleno"
         },
         skills: [
@@ -43,8 +43,8 @@ const users: UserData[] = [
         name: "Alexsandro Silva",
         email: "alexsilva@outlook.com",
         role: {
-            name: "Developer",
-            seniority: "Senior"
+            name: "Backend",
+            seniority: "Sênior"
         },
         skills: [
             {
@@ -62,7 +62,7 @@ const users: UserData[] = [
         name: "Saulo Quaresma",
         email: "sauloquaresma@outlook.com",
         role: {
-            name: "Developer",
+            name: "Frontend",
             seniority: "Pleno"
         },
         skills: [
@@ -85,7 +85,7 @@ const users: UserData[] = [
         name: "Fernanda Caccese",
         email: "fercaccese@outlook.com",
         role: {
-            name: "UX Designer",
+            name: "UX/UI",
             seniority: "Pleno"
         },
         skills: [
