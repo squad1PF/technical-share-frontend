@@ -11,3 +11,15 @@ export interface UserData {
         level: number;
     }[]
 }
+export interface NewUserData {
+    name: string;
+    email: string;
+    role: {
+        name: string;
+        seniority: string;
+    }
+    skills: {
+        tech: string;
+        level: number;
+    }[]
+}

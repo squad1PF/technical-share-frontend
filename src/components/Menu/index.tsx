@@ -1,18 +1,37 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 
 import { MenuWrapper, MobileLinks } from "./styles";
+import AuthContext from "../../contexts/auth";
+import Avatar from "../Avatar";
 
 const Menu: React.FC = () => {
     const [displayLinks, setDisplayLinks] = useState(false);
+    const { user } = useContext(AuthContext);
 
     const links = (
         <>
             <Link to="/">Home</Link><br/>
             <Link to="/find">Agendar Encontros</Link><br/>
-            <Link to="/signin">Entrar</Link><br/>
-            <Link to="/signup">Cadastrar</Link><br/>
+
+            {
+                user && (
+                    <Link to={`/profile/${user.id}`}>
+                        <div id="profile-link-wrapper">
+                            { user.name }
+                            <div id="avatar-container">
+                                <Avatar />
+                            </div>
+                        </div>
+                    </Link>
+                ) || (
+                    <>
+                        <Link to="/signin">Entrar</Link><br/>
+                        <Link to="/signup">Cadastrar</Link><br/>
+                    </>
+                )
+            }
         </>
     )
 

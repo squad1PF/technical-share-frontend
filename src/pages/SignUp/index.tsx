@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Main } from './styles';
+import AuthContext from '../../contexts/auth';
+import { NewUserData } from '../../interfaces/user';
 
 type UserDataForm = {
     name: string,
-    occupationArea: string,
+    role: string,
     seniority: string,
     email: string,
     password: string
@@ -14,7 +16,7 @@ type UserDataForm = {
 
 const validationUserData = yup.object().shape({
     name: yup.string().required("O nome completo é obrigatório"),
-    occupationArea: yup.string().required("A área de atuação é obrigatória"),
+    role: yup.string().required("A área de atuação é obrigatória"),
     seniority: yup.string().required("A senioridade é obrigatória"),
     email: yup.string().required("O email é obrigatório"),
     password: yup.string().required("A senha é obrigatória")
@@ -27,9 +29,21 @@ const SignUp: React.FC = () => {
         resolver: yupResolver(validationUserData)
     })
 
-    const addUser = (userData: UserDataForm) => (
-        console.log(userData)
-    )
+    const { signUp } = useContext(AuthContext);
+
+    const addUser = (userData: UserDataForm) => {
+        const newUser: NewUserData = {
+            name: userData.name,
+            email: userData.email,
+            role: {
+                name: userData.role,
+                seniority: userData.seniority,
+            },
+            skills: []
+        }
+
+        signUp(newUser);
+    }
 
     return (
         <Main>
@@ -42,14 +56,14 @@ const SignUp: React.FC = () => {
                         <p>{errors.name?.message}</p>
 
                         <label>Área de atuação:</label>
-                        <select id="occupationArea" {...register("occupationArea")} defaultValue={'default'}>
+                        <select id="role" {...register("role")} defaultValue={'default'}>
                             <option value='default' disabled hidden>Escolha:</option>
                             <option>Frontend</option>
                             <option>Backend</option>
                             <option>Fullstack</option>
                             <option>UX/UI</option>
                         </select>
-                        <p>{errors.occupationArea?.message}</p>
+                        <p>{errors.role?.message}</p>
 
                         <label>Senioridade:</label>
                         <select id="seniority" {...register("seniority")} defaultValue={'default'}>

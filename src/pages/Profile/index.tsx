@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import AuthContext from "../../contexts/auth";
 import { UserData } from "../../interfaces/user";
 
 import { getUser } from "../../services/users";
@@ -9,14 +10,15 @@ import { ProfileContainer, ProfilePage } from "./styles";
 const Profile: React.FC = () => {
     const { id } = useParams<"id">();
     const [user, setUser] = useState<UserData | undefined>(undefined);
-
+    const { signOut, signed } = useContext(AuthContext);
+    
     useEffect(() => {
         if(id) {
             getUser(id, (value) => {
                 setUser(value)
             })
         }
-    }, []);
+    }, [id]);
 
     return (
         <ProfilePage>
@@ -24,8 +26,8 @@ const Profile: React.FC = () => {
                 <div id="profile-container">
                     <div>
                         <div id="avatar-container">
-                        <Avatar />
-                    </div>
+                            <Avatar />
+                        </div>
                     </div>
 
                     <div id="info-wrapper">
@@ -40,6 +42,12 @@ const Profile: React.FC = () => {
                 <div id="contact-wrapper">
                     <p>{ user?.email }</p>
                 </div>
+
+                {
+                    signed && (
+                        <button onClick={() => signOut()}>Deslogar</button>
+                    )
+                }
 
                 <h4 className="label">Habilidades:</h4>
                 <div id="skills-container">

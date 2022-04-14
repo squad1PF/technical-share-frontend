@@ -7,7 +7,7 @@ export const ProfilePage = styled.div`
 `;
 
 export const ProfileContainer = styled.div`
-    box-shadow: 0 0 100px #00000040;
+    //box-shadow: 0 0 100px #00000040;
     flex-direction: column;
     align-items: center;
     max-width: 600px;
