@@ -1,0 +1,7 @@
+{
+    "/users/:id": "/users/:id",
+    "/users\\?email=:email": "/users/:email",
+
+    "/metorships\\?id_mentor=:id_mentor": "/mertorships/:id_mentor",
+    "/metorships\\?id_mentored=:id_mentored": "/mertorships/:id_mentored"
+}
