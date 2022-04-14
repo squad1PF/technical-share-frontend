@@ -137,6 +137,16 @@
       },
       "skills": [],
       "id": "75Tj7Hg"
+    },
+    {
+      "name": "José Alberto",
+      "email": "jose@hotmail.com",
+      "role": {
+        "name": "UX/UI",
+        "seniority": "Júnior"
+      },
+      "skills": [],
+      "id": "fmipPVR"
     }
   ],
   "messages": [

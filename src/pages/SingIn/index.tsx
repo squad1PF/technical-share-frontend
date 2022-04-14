@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import AuthContext from '../../contexts/auth';
+import { SignInPage } from './styles';
 
 const SignIn: React.FC = () => {
+    const [email, setEmail] = useState("");
+    const { signIn } = useContext(AuthContext);
+
+    function handleSubmit() {
+        signIn(email);
+    }
+
     return (
-        <h1>SignIn Works!</h1>
+        <SignInPage>
+            <form>
+                <input type="text" value={email} onInput={(e) => setEmail(e.currentTarget.value)}/>
+                <button type="button" onClick={handleSubmit}>Logar</button>
+            </form>
+        </SignInPage>
     )
 }
 

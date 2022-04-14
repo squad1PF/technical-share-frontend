@@ -9,13 +9,13 @@ import { ProfileContainer, ProfilePage } from "./styles";
 
 const Profile: React.FC = () => {
     const { id } = useParams<"id">();
-    const [user, setUser] = useState<UserData | undefined>(undefined);
-    const { signOut, signed } = useContext(AuthContext);
+    const [currentUser, setCurrentUser] = useState<UserData | undefined>(undefined);
+    const { user, signOut } = useContext(AuthContext);
     
     useEffect(() => {
         if(id) {
             getUser(id, (value) => {
-                setUser(value)
+                setCurrentUser(value)
             })
         }
     }, [id]);
@@ -31,8 +31,8 @@ const Profile: React.FC = () => {
                     </div>
 
                     <div id="info-wrapper">
-                        <h1>{ user?.name }</h1>
-                        <p>{ user?.role.name }, { user?.role.seniority }</p>
+                        <h1>{ currentUser?.name }</h1>
+                        <p>{ currentUser?.role.name }, { currentUser?.role.seniority }</p>
 
                     </div>
 
@@ -40,11 +40,11 @@ const Profile: React.FC = () => {
                 
                 <h4 className="label">Contatos:</h4>
                 <div id="contact-wrapper">
-                    <p>{ user?.email }</p>
+                    <p>{ currentUser?.email }</p>
                 </div>
 
                 {
-                    signed && (
+                    user?.id === currentUser?.id && (
                         <button onClick={() => signOut()}>Deslogar</button>
                     )
                 }
@@ -52,7 +52,7 @@ const Profile: React.FC = () => {
                 <h4 className="label">Habilidades:</h4>
                 <div id="skills-container">
                     <ul>
-                        { user?.skills.map((skill, index) => {
+                        { currentUser?.skills.map((skill, index) => {
                             let levelStr = "";
                             for(let i = 0; i < skill.level; i++) {
                                 levelStr += "🍊"
