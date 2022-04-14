@@ -8,6 +8,6 @@ export interface UserData {
     }
     skills: {
         tech: string;
-        level: string;
+        level: number;
     }[]
 }

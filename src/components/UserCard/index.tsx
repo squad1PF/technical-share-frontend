@@ -13,12 +13,14 @@ type UserCardProps = {
 const UserCard: React.FC<UserCardProps> = ({ user, elementKey }) => {
     const { id, name, email, role, skills } = user;
 
-    const techs = skills.map((skill, index) => skill.tech)
+    const techs = skills.map((skill, index) => (
+        skill.tech
+    ))
     const [username, server] = email.split("@");
     const navigate = useNavigate();
 
     return (
-        <UserCardWrapper onClick={() => navigate(`/user/${id}`)}>
+        <UserCardWrapper onClick={() => navigate(`/profile/${id}`)}>
             <div id="avatar-wrapper">
                 <div id="avatar">?</div>
             </div>
