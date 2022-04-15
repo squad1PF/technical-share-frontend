@@ -14,6 +14,7 @@ const Menu: React.FC = () => {
         <>
             <Link to="/">Home</Link><br/>
             <Link to="/find">Agendar Encontros</Link><br/>
+            <Link to="/user/profile">Perfil</Link><br/>
 
             {
                 user && (

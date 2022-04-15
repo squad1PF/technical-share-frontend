@@ -2,6 +2,7 @@ import { RouteObject } from 'react-router-dom';
 
 import Users from '../pages/Find';
 import Profile from '../pages/Profile';
+import UserProfile from '../pages/UserProfile';
 import ToSchedule from '../pages/ToSchedule';
 
 const AppRoutes: RouteObject[] = [
@@ -12,6 +13,10 @@ const AppRoutes: RouteObject[] = [
     {
         path: "/profile/:id",
         element: <Profile />
+    },
+    {
+        path: "/user/profile/:id",
+        element: <UserProfile/>
     },
     {
         path: "/mentorships/new",

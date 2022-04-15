@@ -4,7 +4,6 @@ import Avatar from "../../components/Avatar";
 import Loading from "../../components/Loading";
 import AuthContext from "../../contexts/auth";
 import { UserData } from "../../interfaces/user";
-import { getMentorshipsByMentor, getMentorshipsByMentored } from "../../services/mentorships";
 
 import { getUser } from "../../services/users";
 import { PrimaryButton } from "../../styles/buttons";
@@ -16,9 +15,9 @@ const Profile: React.FC = () => {
 
     const { id } = useParams<"id">();
     const navigate = useNavigate();
-    
+   
     useEffect(() => {
-        if(id) {
+        if (id) {
             getUser(id, (value) => {
                 setCurrentUser(value);
             })
@@ -37,36 +36,44 @@ const Profile: React.FC = () => {
                         </div>
 
                         <div id="info-wrapper">
-                            <h1>{ currentUser?.name }</h1>
-                            <p>{ currentUser?.role.name }, { currentUser?.role.seniority }</p>
-
+                            <h1>{currentUser?.name}</h1>
+                            <p>{currentUser?.role.name}, {currentUser?.role.seniority}</p>
                         </div>
-
-                    </div>
-                    
-                    <h4 className="label">Contatos:</h4>
-                    <div id="contact-wrapper">
-                        <p>{ currentUser?.email }</p>
                     </div>
 
-                    <h4 className="label">Habilidades:</h4>
-                    <div id="skills-container">
-                        <ul>
-                            { currentUser?.skills.map((skill, index) => {
-                                let levelStr = "";
-                                for(let i = 0; i < skill.level; i++) {
-                                    levelStr += "🍊"
-                                }
+                <h4 className="label">Contatos:</h4>
+                <div id="contact-wrapper">
+                    <p>{currentUser?.email}</p>
+                </div>
 
-                                return (
-                                    <li key={index}>
-                                        <p>{ skill.tech }</p>
-                                        <p>{ levelStr }</p>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
+                <h4 className="label">Habilidades:</h4>
+                <div id="skills-container">
+                    <ul>
+                        { currentUser?.skills.map((skill, index) => {
+                            let levelStr = "";
+                            for(let i = 0; i < skill.level; i++) {
+                                levelStr += "🍊"
+                            }
+
+                <h4 className="label">Habilidades:</h4>
+                <div id="skills-container">
+                    <ul>
+                        { currentUser?.skills.map((skill, index) => {
+                            let levelStr = "";
+                            for (let i = 0; i < skill.level; i++) {
+                                levelStr += "🍊"
+                            }
+
+                            return (
+                                <li key={index}>
+                                    <p>{ skill.tech }</p>
+                                    <p>{ levelStr }</p>
+                                </li>
+                            )
+                          })
+                        }
+                  </ul>
+              </div>
 
                     <PrimaryButton
                         onClick={ () => navigate( "/mentorships/new", {
