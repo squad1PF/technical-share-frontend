@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 
 import { MenuWrapper, MobileLinks } from "./styles";
+import AuthContext from "../../contexts/auth";
+import Avatar from "../Avatar";
 
 const Menu: React.FC = () => {
-    const [displayLinks, setDisplayLinks] = useState(true);
+    const [displayLinks, setDisplayLinks] = useState(false);
+    const { user } = useContext(AuthContext);
 
-
+    const links = (
+        <>
+            <Link to="/">Home</Link><br/>
+            <Link to="/find">Agendar Encontros</Link><br/>
+            {
+                user && (
+                    <Link to={`/user/profile/${user.id}`}>
+                        <div id="profile-link-wrapper">
+                            { user.name }
+                            <div id="avatar-container">
+                                <Avatar />
+                            </div>
+                        </div>
+                    </Link>
+                ) || (
+                    <>
+                        <Link to="/signin">Entrar</Link><br/>
+                        <Link to="/signup">Cadastrar</Link><br/>
+                    </>
+                )
+            }
+        </>
+    )
 
     return (
         <>
@@ -25,22 +50,14 @@ const Menu: React.FC = () => {
                 </div>
 
                 <div className="container" id="links">
-                    <Link to="/">Home</Link><br/>
-                    <Link to="/find">Agendar Encontros</Link><br/>
-                    <Link to="/dashboard">Dashboard</Link><br/>
-                    <Link to="/signin">Sign In</Link><br/>
-                    <Link to="/signup">Sign Up</Link><br/>
+                    { links }
                 </div>
             </MenuWrapper>
 
             {
                 displayLinks && (
                     <MobileLinks>
-                        <Link to="/">Home</Link><br/>
-                        <Link to="/find">Agendar Encontros</Link><br/>
-                        <Link to="/dashboard">Dashboard</Link><br/>
-                        <Link to="/signin">Sign In</Link><br/>
-                        <Link to="/signup">Sign Up</Link><br/>
+                        { links }
                     </MobileLinks>
                 )
             }

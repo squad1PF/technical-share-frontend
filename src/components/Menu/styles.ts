@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MenuWrapper = styled.nav`
     background-color: ${props => props.theme.palette.primary.main};
+    box-shadow: 0 10px 10px #00000020;
     color: ${props => props.theme.palette.primary.contrastText};
     justify-content: space-between;
     display: flex;
@@ -19,10 +20,22 @@ export const MenuWrapper = styled.nav`
         text-decoration: none;
         margin-left: 4%;
         padding: 8px;
+
+        div#profile-link-wrapper {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 100%;
+
+            div#avatar-container {
+                max-width: 32px;
+                display: none;
+            }
+        }
     }
 
 
-    @media(min-width: 540px) {
+    @media(min-width: 725px) {
         #icon {
             display: none;
         }
@@ -38,15 +51,28 @@ export const MobileLinks = styled.div`
     box-shadow: 0 10px 10px #00000020;
 
     a {
-        text-decoration: none;
-        display: inline-block;
-        width: 100%;
-        padding: 4%;
-        text-align: center;
         border-bottom: 1px solid #00000040;
+        justify-content: center;
+        text-decoration: none;
+        display: inline-flex;
+        text-align: center;
+        padding: 4%;
+        width: 100%;
+        
+        div#profile-link-wrapper {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 100%;
+
+            div#avatar-container {
+                max-width: 48px;
+                margin-left: 4%;
+            }
+        }
     }
 
-    @media(min-width: 540px) {
+    @media(min-width: 725px) {
         display: none;
     }
 `;
