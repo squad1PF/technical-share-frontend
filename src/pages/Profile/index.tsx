@@ -3,19 +3,29 @@ import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import AuthContext from "../../contexts/auth";
 import { UserData } from "../../interfaces/user";
+import { getMentorshipsByMentor, getMentorshipsByMentored } from "../../services/mentorships";
 
 import { getUser } from "../../services/users";
 import { ProfileContainer, ProfilePage } from "./styles";
 
 const Profile: React.FC = () => {
-    const { id } = useParams<"id">();
     const [currentUser, setCurrentUser] = useState<UserData | undefined>(undefined);
     const { user, signOut } = useContext(AuthContext);
+    const { id } = useParams<"id">();
+
     
     useEffect(() => {
         if(id) {
             getUser(id, (value) => {
-                setCurrentUser(value)
+                setCurrentUser(value);
+            })
+
+            getMentorshipsByMentor(id, (value) => {
+                console.log(value)
+            })
+
+            getMentorshipsByMentored(id, (value) => {
+                console.log(value)
             })
         }
     }, [id]);
