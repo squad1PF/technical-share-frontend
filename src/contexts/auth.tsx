@@ -25,11 +25,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     // Auth Functions
     async function signIn(email: string) {
         const response = await auth.signIn(email);
-        console.log(response);
-
         setUser(response);
         localStorage.setItem("user", JSON.stringify(response));
-        navigate("/profile")
     }
 
     async function signUp(values: NewUserData) {

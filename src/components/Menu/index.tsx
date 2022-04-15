@@ -10,7 +10,7 @@ const Menu: React.FC = () => {
     const [displayLinks, setDisplayLinks] = useState(false);
     const { user } = useContext(AuthContext);
 
-    const links = (
+  const links = (
         <>
             <Link to="/">Home</Link><br/>
             <Link to="/find">Agendar Encontros</Link><br/>

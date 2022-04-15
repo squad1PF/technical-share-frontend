@@ -1,4 +1,5 @@
 export interface UserData {
+    id: string;
     name: string;
     email: string;
     role: {
@@ -7,6 +8,18 @@ export interface UserData {
     }
     skills: {
         tech: string;
-        level: string;
+        level: number;
+    }[]
+}
+export interface NewUserData {
+    name: string;
+    email: string;
+    role: {
+        name: string;
+        seniority: string;
+    }
+    skills: {
+        tech: string;
+        level: number;
     }[]
 }

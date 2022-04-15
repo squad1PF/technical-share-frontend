@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import MentorshipCard from "../../components/MentorshipCard";
 import AuthContext from "../../contexts/auth";
 import { MentorshipData } from "../../interfaces/mentorships";
 
@@ -63,6 +64,7 @@ const UserProfile: React.FC = () => {
           </div>
 
           <h4 className="label">Mentorias Agendadas</h4>
+
           <div id="mentorship-container">
             <ul>
               {mentorships?.map((mentorship, index) => {
@@ -82,9 +84,8 @@ const UserProfile: React.FC = () => {
           user?.id === user?.id && (
             <button className="logout-button" onClick={() => signOut()}>Deslogar</button>
           )
-        }
+        }           
       </ProfileContainer>
-
     </ProfilePage>
   )
 }

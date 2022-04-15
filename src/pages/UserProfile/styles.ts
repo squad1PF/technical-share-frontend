@@ -4,6 +4,7 @@ export const ProfilePage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100%;
 `;
 
 export const ProfileContainer = styled.div`
@@ -102,6 +103,7 @@ export const ProfileContainer = styled.div`
         }
     }
 
+
     .logout-button {
         padding: 8px;
         border-radius: 15px;
@@ -116,7 +118,7 @@ export const ProfileContainer = styled.div`
         background-color: #555555;
         color: white;
     }
-
+    
     @media(min-width: 400px) {
 
         div#profile-container {
@@ -125,7 +127,7 @@ export const ProfileContainer = styled.div`
             div#info-wrapper {
                 width: auto;
                 margin: 0;
-                margin-left: 4%;
+                margin-top: 4%;
             }
         }
     }

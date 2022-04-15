@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { AuthProvider } from './contexts/auth';
 
 import Routes from './routes';
 import GlobalStyle from './styles/global';
@@ -10,9 +11,11 @@ function App() {
     <BrowserRouter>
       <GlobalStyle />
 
-      <ThemeProvider theme={defaultTheme}>
-        <Routes />
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider theme={defaultTheme}>
+          <Routes />
+        </ThemeProvider>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

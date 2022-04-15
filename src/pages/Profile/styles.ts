@@ -4,6 +4,7 @@ export const ProfilePage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
 `;
 
 export const ProfileContainer = styled.div`
@@ -62,6 +63,7 @@ export const ProfileContainer = styled.div`
 
     div#skills-container {
         width: 100%;
+        margin-bottom: 8%;
 
         ul {
             flex-direction: column;
