@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Loading from "../../components/Loading";
 import UserCard from "../../components/UserCard";
 
+import AuthContext from "../../contexts/auth";
 import { UserData } from "../../interfaces/user";
 import { getUsers } from "../../services/users";
 import { FindContainer } from "./styles";
@@ -13,6 +14,8 @@ type FiltersProps = {
 }
 
 const Find: React.FC = () => {
+    const { user } = useContext(AuthContext);
+
     // UseStates
     const [users, setUsers] = useState<UserData[] | null>(null);
     const [filters, setFilters] = useState<FiltersProps>({
@@ -42,9 +45,9 @@ const Find: React.FC = () => {
 
 
     // Utils
-    const filteredUsers = users?.filter(user => {
+    const filteredUsers = users?.filter(cardUser => {
         const hasSkill = Boolean(
-            user.skills
+            cardUser.skills
                 .find( skill => (
                     skill.tech
                         .toLowerCase()
@@ -53,16 +56,25 @@ const Find: React.FC = () => {
         );
 
         const hasRole = Boolean(
-            user.role.name
+            cardUser.role.name
                 .includes(filters.role)
         )
 
         const hasSeniority = Boolean(
-            user.role.seniority
+            cardUser.role.seniority
                 .includes(filters.seniority)
         )
 
-        return (hasSkill && hasRole && hasSeniority);
+        const isUser = Boolean(
+            user?.id === cardUser.id
+        )
+
+        return (
+            !isUser &&
+            hasSkill &&
+            hasRole &&
+            hasSeniority
+        );
     })
 
     return (
