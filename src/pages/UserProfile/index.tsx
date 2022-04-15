@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import MentorshipCard from "../../components/MentorshipCard";
 import AuthContext from "../../contexts/auth";
 import { MentorshipData } from "../../interfaces/mentorships";
 
@@ -12,17 +13,12 @@ import { ProfileContainer } from "./styles";
 const UserProfile: React.FC = () => {
   const { user } = useContext(AuthContext)
   const [mentorships, setMentorships] = useState<MentorshipData[] | undefined>(undefined)
-  const { id } = useParams<"id">();
 
   useEffect(() => {
-    if (id) {
-      getMentorships(id, (value) => {
-        if (id === user?.id) {
-          setMentorships(value)
-        }
-      })
-    }
-  }, [id])
+    getMentorships(user?.id as string, (value) => {
+      setMentorships(value)
+    })
+  }, []);
 
   return (
     <ProfilePage>
@@ -66,15 +62,15 @@ const UserProfile: React.FC = () => {
           <h4 className="label">Mentorias Agendadas</h4>
             <div id="mentorship-container">
               <ul>
-                {mentorships?.map((mentorship, index) => {
-                  return (
-                    <li key={index}>
-                      <p>Mentor: {mentorship.id_mentor}</p>
-                      <p>Início: {mentorship.start_time}</p>
-                      <p>Final: {mentorship.end_time}</p>
-                    </li>
-                  )
-                })}
+                {
+                  mentorships?.map((mentorship, index) => {
+                    return (
+                      <li key={index}>
+                        <MentorshipCard mentorship={mentorship}/>
+                      </li>
+                    )
+                  })
+                }
               </ul>
             </div>
           </div>

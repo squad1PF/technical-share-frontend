@@ -55,15 +55,6 @@ const Profile: React.FC = () => {
                                 levelStr += "🍊"
                             }
 
-                <h4 className="label">Habilidades:</h4>
-                <div id="skills-container">
-                    <ul>
-                        { currentUser?.skills.map((skill, index) => {
-                            let levelStr = "";
-                            for (let i = 0; i < skill.level; i++) {
-                                levelStr += "🍊"
-                            }
-
                             return (
                                 <li key={index}>
                                     <p>{ skill.tech }</p>

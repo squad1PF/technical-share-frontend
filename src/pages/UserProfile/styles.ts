@@ -4,7 +4,7 @@ export const ProfilePage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    min-height: 100%;
 `;
 
 export const ProfileContainer = styled.div`
@@ -111,7 +111,7 @@ export const ProfileContainer = styled.div`
             div#info-wrapper {
                 width: auto;
                 margin: 0;
-                margin-left: 4%;
+                margin-top: 4%;
             }
         }
     }

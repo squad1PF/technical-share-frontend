@@ -14,11 +14,10 @@ const Menu: React.FC = () => {
         <>
             <Link to="/">Home</Link><br/>
             <Link to="/find">Agendar Encontros</Link><br/>
-            <Link to="/user/profile">Perfil</Link><br/>
 
             {
                 user && (
-                    <Link to={`/profile/${user.id}`}>
+                    <Link to={`/profile`}>
                         <div id="profile-link-wrapper">
                             { user.name }
                             <div id="avatar-container">

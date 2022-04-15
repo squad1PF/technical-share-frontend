@@ -15,7 +15,7 @@ const AppRoutes: RouteObject[] = [
         element: <Profile />
     },
     {
-        path: "/user/profile/:id",
+        path: "/profile",
         element: <UserProfile/>
     },
     {
