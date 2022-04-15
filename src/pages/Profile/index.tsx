@@ -22,14 +22,6 @@ const Profile: React.FC = () => {
             getUser(id, (value) => {
                 setCurrentUser(value);
             })
-
-            getMentorshipsByMentor(id, (value) => {
-                console.log(value)
-            })
-
-            getMentorshipsByMentored(id, (value) => {
-                console.log(value)
-            })
         }
     }, [id]);
 
@@ -56,12 +48,6 @@ const Profile: React.FC = () => {
                     <div id="contact-wrapper">
                         <p>{ currentUser?.email }</p>
                     </div>
-
-                    {
-                        user?.id === currentUser?.id && (
-                            <button onClick={() => signOut()}>Deslogar</button>
-                        )
-                    }
 
                     <h4 className="label">Habilidades:</h4>
                     <div id="skills-container">
