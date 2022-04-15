@@ -22,8 +22,6 @@ const validationUserData = yup.object().shape({
     password: yup.string().required("A senha é obrigatória")
 })
 
-/*const createUserURL = 'https://api-technical-share.herokuapp.com/cadastro'*/
-
 const SignUp: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<UserDataForm>({
         resolver: yupResolver(validationUserData)

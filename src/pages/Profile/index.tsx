@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import AuthContext from "../../contexts/auth";
 import { UserData } from "../../interfaces/user";
-import { getMentorshipsByMentor, getMentorshipsByMentored } from "../../services/mentorships";
 
 import { getUser } from "../../services/users";
 import { ProfileContainer, ProfilePage } from "./styles";
@@ -13,19 +12,11 @@ const Profile: React.FC = () => {
     const { user, signOut } = useContext(AuthContext);
     const { id } = useParams<"id">();
 
-    
+
     useEffect(() => {
-        if(id) {
+        if (id) {
             getUser(id, (value) => {
                 setCurrentUser(value);
-            })
-
-            getMentorshipsByMentor(id, (value) => {
-                console.log(value)
-            })
-
-            getMentorshipsByMentored(id, (value) => {
-                console.log(value)
             })
         }
     }, [id]);
@@ -41,16 +32,16 @@ const Profile: React.FC = () => {
                     </div>
 
                     <div id="info-wrapper">
-                        <h1>{ currentUser?.name }</h1>
-                        <p>{ currentUser?.role.name }, { currentUser?.role.seniority }</p>
+                        <h1>{currentUser?.name}</h1>
+                        <p>{currentUser?.role.name}, {currentUser?.role.seniority}</p>
 
                     </div>
 
                 </div>
-                
+
                 <h4 className="label">Contatos:</h4>
                 <div id="contact-wrapper">
-                    <p>{ currentUser?.email }</p>
+                    <p>{currentUser?.email}</p>
                 </div>
 
                 {
@@ -62,16 +53,16 @@ const Profile: React.FC = () => {
                 <h4 className="label">Habilidades:</h4>
                 <div id="skills-container">
                     <ul>
-                        { currentUser?.skills.map((skill, index) => {
+                        {currentUser?.skills.map((skill, index) => {
                             let levelStr = "";
-                            for(let i = 0; i < skill.level; i++) {
+                            for (let i = 0; i < skill.level; i++) {
                                 levelStr += "🍊"
                             }
 
                             return (
                                 <li key={index}>
-                                    <p>{ skill.tech }</p>
-                                    <p>{ levelStr }</p>
+                                    <p>{skill.tech}</p>
+                                    <p>{levelStr}</p>
                                 </li>
                             )
                         })}
