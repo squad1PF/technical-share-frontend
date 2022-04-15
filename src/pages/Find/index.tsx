@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../../components/Loading";
 import UserCard from "../../components/UserCard";
 
 import { UserData } from "../../interfaces/user";
@@ -120,6 +121,8 @@ const Find: React.FC = () => {
                             elementKey={"user_" + index}
                         />
                     ))
+                ) || (
+                    <Loading />
                 )
             }
         </FindContainer>

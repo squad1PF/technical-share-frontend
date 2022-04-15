@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import Loading from "../../components/Loading";
 import AuthContext from "../../contexts/auth";
 import { UserData } from "../../interfaces/user";
 import { getMentorshipsByMentor, getMentorshipsByMentored } from "../../services/mentorships";
@@ -32,54 +33,58 @@ const Profile: React.FC = () => {
 
     return (
         <ProfilePage>
-            <ProfileContainer>
-                <div id="profile-container">
-                    <div>
-                        <div id="avatar-container">
-                            <Avatar />
+            { currentUser && (
+                <ProfileContainer>
+                    <div id="profile-container">
+                        <div>
+                            <div id="avatar-container">
+                                <Avatar />
+                            </div>
                         </div>
+
+                        <div id="info-wrapper">
+                            <h1>{ currentUser?.name }</h1>
+                            <p>{ currentUser?.role.name }, { currentUser?.role.seniority }</p>
+
+                        </div>
+
+                    </div>
+                    
+                    <h4 className="label">Contatos:</h4>
+                    <div id="contact-wrapper">
+                        <p>{ currentUser?.email }</p>
                     </div>
 
-                    <div id="info-wrapper">
-                        <h1>{ currentUser?.name }</h1>
-                        <p>{ currentUser?.role.name }, { currentUser?.role.seniority }</p>
+                    {
+                        user?.id === currentUser?.id && (
+                            <button onClick={() => signOut()}>Deslogar</button>
+                        )
+                    }
 
+                    <h4 className="label">Habilidades:</h4>
+                    <div id="skills-container">
+                        <ul>
+                            { currentUser?.skills.map((skill, index) => {
+                                let levelStr = "";
+                                for(let i = 0; i < skill.level; i++) {
+                                    levelStr += "🍊"
+                                }
+
+                                return (
+                                    <li key={index}>
+                                        <p>{ skill.tech }</p>
+                                        <p>{ levelStr }</p>
+                                    </li>
+                                )
+                            })}
+                        </ul>
                     </div>
 
-                </div>
-                
-                <h4 className="label">Contatos:</h4>
-                <div id="contact-wrapper">
-                    <p>{ currentUser?.email }</p>
-                </div>
-
-                {
-                    user?.id === currentUser?.id && (
-                        <button onClick={() => signOut()}>Deslogar</button>
-                    )
-                }
-
-                <h4 className="label">Habilidades:</h4>
-                <div id="skills-container">
-                    <ul>
-                        { currentUser?.skills.map((skill, index) => {
-                            let levelStr = "";
-                            for(let i = 0; i < skill.level; i++) {
-                                levelStr += "🍊"
-                            }
-
-                            return (
-                                <li key={index}>
-                                    <p>{ skill.tech }</p>
-                                    <p>{ levelStr }</p>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
-
-                <h4 className="label">Horários disponíveis:</h4>
-            </ProfileContainer>
+                    <h4 className="label">Horários disponíveis:</h4>
+                </ProfileContainer>
+            ) || (
+                <Loading />
+            )}
         </ProfilePage>
     )
 }
