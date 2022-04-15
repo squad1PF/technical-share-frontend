@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import AuthContext from "../../contexts/auth";
 import { UserData } from "../../interfaces/user";
 
 import { getUser } from "../../services/users";
@@ -8,13 +9,16 @@ import { ProfileContainer, ProfilePage } from "./styles";
 
 const Profile: React.FC = () => {
     const { id } = useParams<"id">();
-    const [user, setUser] = useState<UserData | undefined>(undefined);
-
+    const [currentUser, setCurrentUser] = useState<UserData | undefined>(undefined);
+    const { user, signOut } = useContext(AuthContext);
+    
     useEffect(() => {
-        getUser(id || "", (value) => {
-            setUser(value)
-        })
-    }, [user]);
+        if(id) {
+            getUser(id, (value) => {
+                setCurrentUser(value)
+            })
+        }
+    }, [id]);
 
     return (
         <ProfilePage>
@@ -22,13 +26,13 @@ const Profile: React.FC = () => {
                 <div id="profile-container">
                     <div>
                         <div id="avatar-container">
-                        <Avatar />
-                    </div>
+                            <Avatar />
+                        </div>
                     </div>
 
                     <div id="info-wrapper">
-                        <h1>{ user?.name }</h1>
-                        <p>{ user?.role.name }, { user?.role.seniority }</p>
+                        <h1>{ currentUser?.name }</h1>
+                        <p>{ currentUser?.role.name }, { currentUser?.role.seniority }</p>
 
                     </div>
 
@@ -36,13 +40,19 @@ const Profile: React.FC = () => {
                 
                 <h4 className="label">Contatos:</h4>
                 <div id="contact-wrapper">
-                    <p>{ user?.email }</p>
+                    <p>{ currentUser?.email }</p>
                 </div>
+
+                {
+                    user?.id === currentUser?.id && (
+                        <button onClick={() => signOut()}>Deslogar</button>
+                    )
+                }
 
                 <h4 className="label">Habilidades:</h4>
                 <div id="skills-container">
                     <ul>
-                        { user?.skills.map((skill, index) => {
+                        { currentUser?.skills.map((skill, index) => {
                             let levelStr = "";
                             for(let i = 0; i < skill.level; i++) {
                                 levelStr += "🍊"

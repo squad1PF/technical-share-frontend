@@ -117,6 +117,36 @@
         }
       ],
       "id": "37sb0EC"
+    },
+    {
+      "name": "Pedro Duarte",
+      "email": "pedro.duarte@gmail.com",
+      "role": {
+        "name": "Backend",
+        "seniority": "Sênior"
+      },
+      "skills": [],
+      "id": "qMtQmpb"
+    },
+    {
+      "name": "Gabriel Silva",
+      "email": "gab.silva@gmail.com",
+      "role": {
+        "name": "Frontend",
+        "seniority": "Pleno"
+      },
+      "skills": [],
+      "id": "75Tj7Hg"
+    },
+    {
+      "name": "José Alberto",
+      "email": "jose@hotmail.com",
+      "role": {
+        "name": "UX/UI",
+        "seniority": "Júnior"
+      },
+      "skills": [],
+      "id": "fmipPVR"
     }
   ],
   "messages": [
