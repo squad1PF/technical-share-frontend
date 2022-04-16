@@ -17,12 +17,17 @@ const UserProfile: React.FC = () => {
 
   const [skill, setSkill] = useState("");
   const [level, setLevel] = useState(1);
+  const { id } = useParams<"id">();
 
   useEffect(() => {
-    getMentorships(user?.id as string, (value) => {
-      setMentorships(value)
-    })
-  }, []);
+    if (id) {
+      getMentorships(id, (value) => {
+        if (id === user?.id) {
+          setMentorships(value)
+        }
+      })
+    }
+  }, [id])
 
   return (
     <ProfilePage>
@@ -90,22 +95,22 @@ const UserProfile: React.FC = () => {
           </div>
 
           <h4 className="label">Mentorias Agendadas</h4>
-            <div id="mentorship-container">
-              <ul>
-                {
-                  mentorships?.map((mentorship, index) => {
-                    return (
-                      <li key={index}>
-                        <MentorshipCard mentorship={mentorship}/>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-          </div>
-      </ProfileContainer>
 
+          <div id="mentorship-container">
+            <ul>
+              {mentorships?.map((mentorship, index) => {
+                return (
+                  <li key={index}>
+                    <p>Mentor: {mentorship.id_mentor}</p>
+                    <p>Início: {mentorship.start_date}</p>
+                    <p>Final: {mentorship.end_date}</p>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
+      </ProfileContainer>
     </ProfilePage>
   )
 }

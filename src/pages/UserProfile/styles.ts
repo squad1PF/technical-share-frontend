@@ -103,6 +103,22 @@ export const ProfileContainer = styled.div`
         }
     }
 
+
+    .logout-button {
+        padding: 8px;
+        border-radius: 15px;
+        border: 2px solid #555555;
+        font-size: 15px;
+        font-weight: bolder ;
+        color: #000;
+        background-color: #ffffff40;
+    }
+
+    .logout-button:hover {
+        background-color: #555555;
+        color: white;
+    }
+    
     @media(min-width: 400px) {
 
         div#profile-container {

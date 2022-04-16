@@ -70,6 +70,8 @@ export const ProfileContainer = styled.div`
             align-items: center;
             list-style: none;
             display: flex;
+            //background-color: #00000020;
+            //border-radius: 8px;
             box-shadow: inset 0 40px 50px #00000020;
             border-top: 4px solid ${props => props.theme.palette.primary.main};
             padding: 4%;
