@@ -27,6 +27,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     // Auth Functions
     async function signIn(email: string) {
         const response = await auth.signIn(email);
+        if(!response.id) throw new Error("E-mail não encontrado")
+
         setUser(response);
         localStorage.setItem("user", JSON.stringify(response));
 

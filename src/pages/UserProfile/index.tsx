@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import MentorshipCard from "../../components/MentorshipCard";
 import AuthContext from "../../contexts/auth";
@@ -14,21 +14,16 @@ import { ProfileContainer } from "./styles";
 const UserProfile: React.FC = () => {
   const { user, addSkill, signOut } = useContext(AuthContext);
   const [mentorships, setMentorships] = useState<MentorshipData[] | undefined>(undefined);
+  const navigate = useNavigate();
 
   const [skill, setSkill] = useState("");
   const [level, setLevel] = useState(1);
-  const { id } = useParams<"id">();
 
   useEffect(() => {
-    if (id) {
-      getMentorships(id, (value) => {
-        if (id === user?.id) {
-          console.log(mentorships)
-          setMentorships(value)
-        }
-      })
-    }
-  }, [id])
+    getMentorships(user?.id as string, (value) => {
+      setMentorships(value)
+    })
+  }, []);
 
   return (
     <ProfilePage>
@@ -106,6 +101,9 @@ const UserProfile: React.FC = () => {
                   </li>
                 )
               })}
+              <li>
+                <PrimaryButton onClick={() => navigate("/find")}>Agendar novas mentorias</PrimaryButton>
+              </li>
             </ul>
           </div>
         </div>

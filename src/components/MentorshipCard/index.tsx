@@ -45,16 +45,18 @@ const MentorshipCard: React.FC<MentorshipCardProps> = ({ mentorship }) => {
             <div id="info-container">
                 <div className="info-item">
                     <FiCalendar />
-                    <p>
-                        { getDateStr(new Date(mentorship.start_date)) }, até { getDateStr(new Date(mentorship.end_date)) }
-                    </p>
+                    { mentorship && (
+                        <p>{getDateStr(new Date(mentorship.start_date)) }, até { getDateStr(new Date(mentorship.end_date))}</p>
+                    )}
                 </div>
-                <div className="info-item">
-                    <FiMessageSquare />
-                    <p>
-                        { mentorship.subject }
-                    </p>
-                </div>
+                { mentorship.subject && (
+                    <div className="info-item">
+                        <FiMessageSquare />
+                        <p>
+                            { mentorship.subject }
+                        </p>
+                    </div>
+                )}
             </div>
         </MentorshipCardWrapper>
     )
