@@ -13,18 +13,20 @@ const Menu: React.FC = () => {
     const links = (
         <>
             <Link to="/">Home</Link><br/>
-            <Link to="/find">Agendar Encontros</Link><br/>
 
             {
                 user && (
-                    <Link to={`/profile`}>
-                        <div id="profile-link-wrapper">
-                            { user.name }
-                            <div id="avatar-container">
-                                <Avatar />
+                    <>
+                        <Link to="/find">Agendar Encontros</Link><br/>
+                        <Link to={`/profile`}>
+                            <div id="profile-link-wrapper">
+                                { user.name }
+                                <div id="avatar-container">
+                                    <Avatar />
+                                </div>
                             </div>
-                        </div>
-                    </Link>
+                        </Link>
+                    </>
                 ) || (
                     <>
                         <Link to="/signin">Entrar</Link><br/>

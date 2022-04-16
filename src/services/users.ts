@@ -16,7 +16,16 @@ const getUser = async (id: string, callback: (value: UserData | undefined) => vo
     callback(res.data);
 }
 
+const addSkill = async (id: string, value: { tech: string, level: number }[]) => {
+    const res: AxiosResponse<UserData> = await api.patch(`/users/${id}`, {
+        skills: value
+    })
+
+    console.log(res);
+}
+
 export {
     getUsers,
     getUser,
+    addSkill,
 }

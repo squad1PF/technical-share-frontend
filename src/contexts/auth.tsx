@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { UserData, NewUserData } from '../interfaces/user';
 import * as auth from '../services/auth';
+import * as users from '../services/users';
 
 type AuthContextData = {
     signed: boolean;
@@ -10,6 +11,7 @@ type AuthContextData = {
     
     signIn(email: string): Promise<void>;
     signUp(values: NewUserData): Promise<void>;
+    addSkill(values: { tech: string, level: number}): void;
 
     signOut(): void;
 }
@@ -46,8 +48,20 @@ export const AuthProvider: React.FC = ({ children }) => {
         localStorage.removeItem("user");
     }
 
+    function addSkill(value: { tech: string, level: number}) {
+        
+        setUser(prev => {
+            const { id, email, name, role, skills } = prev as UserData;
+            const data = { id, email, name, role, skills: [ ...skills, value ] }
+            
+            users.addSkill(user?.id as string, data.skills)
+            localStorage.setItem("user", JSON.stringify(data));
+            return (data)
+        })
+    }
+
     return (
-        <AuthContext.Provider value={{ signed: Boolean(user), user, signIn, signUp, signOut }}>
+        <AuthContext.Provider value={{ signed: Boolean(user), user, addSkill, signIn, signUp, signOut }}>
           { children }
         </AuthContext.Provider>
     )

@@ -7,12 +7,16 @@ import { MentorshipData } from "../../interfaces/mentorships";
 
 import { getMentorships } from "../../services/mentorships";
 import { getUser } from "../../services/users";
+import { PrimaryButton } from "../../styles/buttons";
 import { ProfilePage } from "./styles";
 import { ProfileContainer } from "./styles";
 
 const UserProfile: React.FC = () => {
-  const { user } = useContext(AuthContext)
-  const [mentorships, setMentorships] = useState<MentorshipData[] | undefined>(undefined)
+  const { user, addSkill, signOut } = useContext(AuthContext);
+  const [mentorships, setMentorships] = useState<MentorshipData[] | undefined>(undefined);
+
+  const [skill, setSkill] = useState("");
+  const [level, setLevel] = useState(1);
 
   useEffect(() => {
     getMentorships(user?.id as string, (value) => {
@@ -35,10 +39,13 @@ const UserProfile: React.FC = () => {
             <p>{user?.role.name}, {user?.role.seniority}</p>
           </div>
 
+          <PrimaryButton onClick={() => signOut()}>Deslogar</PrimaryButton>
+          
           <h4 className="label">Contatos:</h4>
           <div id="contact-wrapper">
             <p>{user?.email}</p>
           </div>
+
 
           <h4 className="label">Habilidades:</h4>
           <div id="skills-container">
@@ -56,6 +63,29 @@ const UserProfile: React.FC = () => {
                   </li>
                 )
               })}
+              <li>
+                <input
+                  type="text"
+                  placeholder="Habilidade/Tecnologia"
+                  value={skill}
+                  onInput={(e) => setSkill(e.currentTarget.value)}
+                  style={
+                    { flex: .9 }
+                  }
+                />
+                
+                <input
+                  type="number"
+                  placeholder="Nível"
+                  min={1}
+                  max={5}
+                  value={level}
+                  onInput={(e) => setLevel(Number(e.currentTarget.value))}
+                />
+                <PrimaryButton
+                  onClick={() => addSkill({ tech: skill, level})}
+                >+</PrimaryButton>
+              </li>
             </ul>
           </div>
 
