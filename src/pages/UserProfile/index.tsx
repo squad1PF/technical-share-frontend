@@ -6,19 +6,23 @@ import AuthContext from "../../contexts/auth";
 import { MentorshipData } from "../../interfaces/mentorships";
 
 import { getMentorships } from "../../services/mentorships";
-import { getUser } from "../../services/users";
 import { ProfilePage } from "./styles";
 import { ProfileContainer } from "./styles";
 
 const UserProfile: React.FC = () => {
-  const { user } = useContext(AuthContext)
+  const { user, signOut } = useContext(AuthContext)
   const [mentorships, setMentorships] = useState<MentorshipData[] | undefined>(undefined)
+  const { id } = useParams<"id">();
 
   useEffect(() => {
-    getMentorships(user?.id as string, (value) => {
-      setMentorships(value)
-    })
-  }, []);
+    if (id) {
+      getMentorships(id, (value) => {
+        if (id === user?.id) {
+          setMentorships(value)
+        }
+      })
+    }
+  }, [id])
 
   return (
     <ProfilePage>
@@ -60,22 +64,28 @@ const UserProfile: React.FC = () => {
           </div>
 
           <h4 className="label">Mentorias Agendadas</h4>
-            <div id="mentorship-container">
-              <ul>
-                {
-                  mentorships?.map((mentorship, index) => {
-                    return (
-                      <li key={index}>
-                        <MentorshipCard mentorship={mentorship}/>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-          </div>
-      </ProfileContainer>
 
+          <div id="mentorship-container">
+            <ul>
+              {mentorships?.map((mentorship, index) => {
+                return (
+                  <li key={index}>
+                    <p>Mentor: {mentorship.id_mentor}</p>
+                    <p>Início: {mentorship.start_time}</p>
+                    <p>Final: {mentorship.end_time}</p>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
+
+        {
+          user?.id === user?.id && (
+            <button className="logout-button" onClick={() => signOut()}>Deslogar</button>
+          )
+        }           
+      </ProfileContainer>
     </ProfilePage>
   )
 }

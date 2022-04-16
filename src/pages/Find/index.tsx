@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from "react";
 import Loading from "../../components/Loading";
 import UserCard from "../../components/UserCard";
@@ -16,7 +17,7 @@ type FiltersProps = {
 const Find: React.FC = () => {
     const { user } = useContext(AuthContext);
 
-    // UseStates
+  // UseStates
     const [users, setUsers] = useState<UserData[] | null>(null);
     const [filters, setFilters] = useState<FiltersProps>({
         skill: "",

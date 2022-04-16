@@ -25,7 +25,6 @@ export const AuthProvider: React.FC = ({ children }) => {
     // Auth Functions
     async function signIn(email: string) {
         const response = await auth.signIn(email);
-
         setUser(response);
         localStorage.setItem("user", JSON.stringify(response));
     }

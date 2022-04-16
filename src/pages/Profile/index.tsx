@@ -12,7 +12,6 @@ import { ProfileContainer, ProfilePage } from "./styles";
 const Profile: React.FC = () => {
     const [currentUser, setCurrentUser] = useState<UserData | undefined>(undefined);
     const { user, signOut } = useContext(AuthContext);
-
     const { id } = useParams<"id">();
     const navigate = useNavigate();
    

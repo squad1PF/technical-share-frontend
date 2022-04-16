@@ -10,14 +10,13 @@ const Menu: React.FC = () => {
     const [displayLinks, setDisplayLinks] = useState(false);
     const { user } = useContext(AuthContext);
 
-    const links = (
+  const links = (
         <>
             <Link to="/">Home</Link><br/>
             <Link to="/find">Agendar Encontros</Link><br/>
-
             {
                 user && (
-                    <Link to={`/profile`}>
+                    <Link to={`/user/profile/${user.id}`}>
                         <div id="profile-link-wrapper">
                             { user.name }
                             <div id="avatar-container">
