@@ -23,6 +23,7 @@ const UserProfile: React.FC = () => {
     if (id) {
       getMentorships(id, (value) => {
         if (id === user?.id) {
+          console.log(mentorships)
           setMentorships(value)
         }
       })
@@ -101,9 +102,7 @@ const UserProfile: React.FC = () => {
               {mentorships?.map((mentorship, index) => {
                 return (
                   <li key={index}>
-                    <p>Mentor: {mentorship.id_mentor}</p>
-                    <p>Início: {mentorship.start_date}</p>
-                    <p>Final: {mentorship.end_date}</p>
+                    <MentorshipCard mentorship={mentorship}/>
                   </li>
                 )
               })}
